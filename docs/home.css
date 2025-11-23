@@ -1,0 +1,181 @@
+/* home.css - updated so footer stays at bottom */
+body {
+  font-family: Arial, sans-serif;
+  margin: 24px;
+  display: flex;
+  flex-direction: column; /* keep header/main/footer in a column */
+  min-height: 100vh; /* allow footer to stick to bottom */
+  gap: 30px;
+  
+}
+
+/* mainContent wraps leftPanel + rightPanel and grows to fill available space */
+#mainContent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: flex-start;
+  flex: 1 1 auto; /* grow so footer is pushed to bottom */
+}
+
+/* left/right panels unchanged except moved into #mainContent layout */
+#leftPanel {
+  max-width: 500px;
+}
+#rightPanel {
+  flex: 1 1 60%;
+  background: #f3f9ff;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  display: block; /* show by default */
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+/* other styles kept, minor reformatting */
+#rfidOutput {
+  border: 2px dashed #555;
+  padding: 20px;
+  font-size: 1.5em;
+  text-align: center;
+  background: #f8f8f8;
+  margin-bottom: 20px;
+}
+#status { margin-top: 10px; font-weight: bold; }
+#result {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  background: #eef;
+  border-radius: 6px;
+  font-size: 1.1em;
+}
+.notfound { background: #fbeaea; border-color: #f99; }
+input {
+  padding: 8px;
+  margin: 5px;
+  font-size: 1em;
+  width: 250px;
+}
+/* Add-student form appearance: form should be flex; wrapper (.add-form) controls visibility */
+#addForm {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Slightly smaller controls inside the right panel form */
+#rightPanel #addForm input,
+#rightPanel #addForm select,
+#rightPanel #addForm .form-control {
+  width: 180px;
+  height: 40px;
+  padding: 8px 10px;
+  margin: 6px 6px;
+  border-radius: 8px;
+  border: 1px solid #d1d7dd;
+  background: #ffffff;
+  color: #222;
+}
+
+/* Style the add student button */
+#addStudentBtn {
+  padding: 8px 12px;
+  margin: 6px;
+  background: #3368A2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#addStudentBtn:hover { background: #146c43; }
+
+/* Make the plus icon look like a small button */
+#rightPanel .btn-cta {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #fff;
+  color: #3368A2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+#rightPanel .btn-cta:hover { transform: translateY(-2px); }
+#setup {
+  margin-bottom: 20px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+}
+#startBtn {
+  padding: 8px 16px;
+  margin-top: 8px;
+  cursor: pointer;
+  background: #3368A2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+#exportBtn{
+  padding: 8px 16px;
+  cursor: pointer;
+  background: #3368A2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+button:hover { background: #3368A2; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 1em;
+  background: white;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+th { background: #3368A2; color: white; }
+tr:nth-child(even) { background: #f9f9f9; }
+h4 {
+  margin-bottom: 5px;
+  margin-top: 20px;
+  color: #3368A2;
+}
+.add-form{
+  display: none;
+}
+.btn-cta{color: #3368A2;}
+
+/* Footer styling - stays at the bottom because body is column and #mainContent flex:1 */
+footer {
+  align-self: stretch;
+  text-align: center;
+  padding: 12px 0;
+  color: #cbd5e1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+  #mainContent {
+    flex-direction: column;
+  }
+  #rightPanel {
+    width: 100%;
+    margin-top: 20px;
+    max-height: none;
+  }
+  .download{
+    gap: 10px;
+  }
+}
