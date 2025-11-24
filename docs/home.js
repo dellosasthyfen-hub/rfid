@@ -439,3 +439,48 @@
     });
   }
 
+
+// Prevent page reload / navigation
+window.addEventListener("beforeunload", function(e) {
+  // Custom message is ignored by most modern browsers, but prevents reload
+  e.preventDefault();
+  e.returnValue = "";
+});
+
+// Prevent F5, Ctrl+R, Cmd+R
+document.addEventListener("keydown", function(e) {
+  if (
+    e.key === "F5" ||
+    (e.ctrlKey && e.key.toLowerCase() === "r") ||
+    (e.metaKey && e.key.toLowerCase() === "r")
+  ) {
+    e.preventDefault();
+    alert("Reload is disabled on this page to prevent data loss.");
+  }
+});
+
+// Prevent form submission from Enter
+document.addEventListener("submit", function(e) {
+  e.preventDefault();
+});
+
+// Prevent Enter key in inputs from triggering reload
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    const target = e.target;
+    if (target.tagName === "INPUT" || target.tagName === "TEXTAREA") {
+      e.preventDefault();
+      // Optionally trigger add student button
+      const addBtn = document.getElementById("addStudentBtn");
+      if (addBtn) addBtn.click();
+    }
+  }
+});
+
+// Optional: disable right-click reload menu (for extra safety)
+window.addEventListener("contextmenu", function(e) {
+  e.preventDefault();
+});
+
+
+
